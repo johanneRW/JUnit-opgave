@@ -3,7 +3,7 @@ package company;
 public class Account {
     private  int accountNumber;
     private  String accountOwner;
-    private  int saldo;
+    private  int balance;
     private int fee =5;
 
 
@@ -11,36 +11,35 @@ public class Account {
     public Account(int accountNumber, String accountOwner, int saldo) {
         this.accountOwner =accountOwner;
         this.accountNumber =accountNumber;
-        this.saldo=saldo;
+        this.balance =saldo;
     }
 
     public Account(int accountNumber,String accountOwner) {
         this.accountOwner =accountOwner;
         this.accountNumber =accountNumber;
-        this.saldo=0;
+        this.balance =0;
     }
 
 
-    public int getSaldo() {
-        return saldo;
+    public int getBalance() {
+        return balance;
     }
 
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
-
 
     public int insert(int amount){
-        saldo=saldo+amount;
-        return saldo;
+        balance = balance +amount;
+        return balance;
     }
 
     public int withdrawal(int amount){
-       int newSaldo= getSaldo()-amount;
+       int newSaldo= getBalance()-amount;
        if (newSaldo<0){
            throw new IllegalArgumentException();
            }
-       setSaldo(newSaldo);
+       setBalance(newSaldo);
         return newSaldo;
     }
 
@@ -48,12 +47,12 @@ public class Account {
     public int transfer(int amount, Account otherAccount){
         this.withdrawal(amount+ fee);
        otherAccount.insert(amount);
-     return getSaldo();
+     return getBalance();
     }
 
     @Override
     public String toString() {
-        return "Account: "+ accountNumber +". Ejer: " + accountOwner +". Saldo: " + saldo;
+        return "Account: "+ accountNumber +". Ejer: " + accountOwner +". Saldo: " + balance;
     }
 
 
