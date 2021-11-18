@@ -7,6 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class AccountTest {
 
     @Test
+    public void testNewAccount_noAmount(){
+        Account account=new Account(1,"Bendt");
+        int expected = 0;
+        int accountSaldo = account.getSaldo();
+        //Assert
+        assertEquals(expected, accountSaldo);}
+
+    @Test
+    public void testNewAccount_whitAmount(){
+        Account account=new Account(1,"Bendt",20);
+        int expected = 20;
+        int accountSaldo = account.getSaldo();
+        //Assert
+        assertEquals(expected, accountSaldo);}
+
+
+    @Test
     public void testOfInsert_whitAmount(){
     Account account=new Account(1,"Bendt",10);
     int expected = 40;
@@ -17,7 +34,7 @@ class AccountTest {
     @Test
     public void testOfInsert_noAmount(){
         Account account=new Account(1,"Bendt");
-        int expected = 430;
+        int expected = 30;
         int result = account.insert(30);
         //Assert
         assertEquals(expected, result);}
