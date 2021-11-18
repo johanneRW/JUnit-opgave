@@ -1,22 +1,22 @@
 package company;
 
 public class Account {
-    private  int kontoNummer;
-    private  String kontoEjer;
+    private  int accountNumber;
+    private  String accountOwner;
     private  int saldo;
-    private int gebyr =5;
+    private int fee =5;
 
 
 
-    public Account(int kontoNummer, String kontoEjer, int saldo) {
-        this.kontoEjer=kontoEjer;
-        this.kontoNummer=kontoNummer;
+    public Account(int accountNumber, String accountOwner, int saldo) {
+        this.accountOwner =accountOwner;
+        this.accountNumber =accountNumber;
         this.saldo=saldo;
     }
 
-    public Account(int kontoNummer,String kontoEjer) {
-        this.kontoEjer=kontoEjer;
-        this.kontoNummer=kontoNummer;
+    public Account(int accountNumber,String accountOwner) {
+        this.accountOwner =accountOwner;
+        this.accountNumber =accountNumber;
         this.saldo=0;
     }
 
@@ -30,8 +30,8 @@ public class Account {
     }
 
 
-    public int insert(int beløb){
-        saldo=saldo+beløb;
+    public int insert(int amount){
+        saldo=saldo+amount;
         return saldo;
     }
 
@@ -45,15 +45,15 @@ public class Account {
     }
 
 
-    public int transfer(int amount, Account otherKonto){
-        this.withdrawal(amount+gebyr);
-       otherKonto.insert(amount);
+    public int transfer(int amount, Account otherAccount){
+        this.withdrawal(amount+ fee);
+       otherAccount.insert(amount);
      return getSaldo();
     }
 
     @Override
     public String toString() {
-        return "Account: "+kontoNummer +". Ejer: " + kontoEjer +". Saldo: " + saldo;
+        return "Account: "+ accountNumber +". Ejer: " + accountOwner +". Saldo: " + saldo;
     }
 
 
